@@ -51,7 +51,7 @@ pytest tests
 
 После запуска тестов, окружение должно выглядеть так. Часть тестов могуть быть красными, это нормально.
 
-![VSCode passed tests](.images/vscode.png)
+![VSCode passed tests](/dices/.images/vscode_pass_tests.png)
 
 ### PyCharm Community Edition
 
