@@ -55,12 +55,4 @@ pytest tests
 
 ### PyCharm Community Edition
 
-![PyCharm passed tests](.images/pycharm.png)
-
 Иногда pycharm может не найти виртуальное окружение, тогда его можно добавить вручную в настройках проекта.
-
-![img.png](.images/pycharm_interpreter.png)
-
-## Links
-
-- <https://github.com/swkBerlin/kata-bootstraps>
