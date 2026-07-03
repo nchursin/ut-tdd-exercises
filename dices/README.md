@@ -39,7 +39,7 @@ pip install -r requirements.txt
 pytest tests
 ```
 
-![Terminal passed tests](.images/terminal.png)
+![VSCode passed tests](/dices/.images/terminal_pass_tests.png)
 
 ### VSCode
 
