@@ -1,6 +1,5 @@
-# Roll Dice Game
+# String Calculator
 
-## Практика String Calculator
 Реализовать String Calculator по TDD (разработка через тестирование). Тесты должны быть понятными и читаемыми.
 
 ### Правила строкового калькулятора (Sting Calculator)
