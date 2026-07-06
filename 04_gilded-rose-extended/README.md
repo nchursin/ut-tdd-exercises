@@ -1,7 +1,7 @@
-# Gilded Rose Refactoring Kata
+# Gilded Rose Refactoring Kata - Extended
 
 ## Требования
-[Требования](GildedRoseRequirements_ru.md)
+[Требования](GildedRose_receipt.md)
 
 ## Настройка окружения
 
@@ -42,8 +42,6 @@ pip install -r requirements.txt
 pytest tests
 ```
 
-![Terminal passed tests](.images/terminal_tests.png)
-
 ### VSCode
 
 Надо поставить расширения. При первом открытии репозитория, VSCode должен предложить это сделать. Можно сделать вручную.
@@ -53,8 +51,6 @@ pytest tests
 - ms-python.autopep8
 
 После запуска тестов, окружение должно выглядеть так. Часть тестов могуть быть красными, это нормально.
-
-![VSCode passed tests](.images/vscode_tests.png)
 
 ### PyCharm Community Edition
 
