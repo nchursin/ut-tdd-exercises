@@ -42,7 +42,7 @@ pip install -r requirements.txt
 pytest tests
 ```
 
-![VSCode passed tests](/dices/.images/terminal_pass_tests.png)
+![VSCode passed tests](.images/terminal_pass_tests.png)
 
 ### VSCode
 
@@ -54,7 +54,7 @@ pytest tests
 
 После запуска тестов, окружение должно выглядеть так. Часть тестов могуть быть красными, это нормально.
 
-![VSCode passed tests](/dices/.images/vscode_pass_tests.png)
+![VSCode passed tests](.images/vscode_pass_tests.png)
 
 ### PyCharm Community Edition
 
