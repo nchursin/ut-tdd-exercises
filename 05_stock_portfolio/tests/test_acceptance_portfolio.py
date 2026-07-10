@@ -1,4 +1,5 @@
 import pytest
+from datetime import datetime
 
 from app.company import Company
 from app.dollar import Dollar
@@ -23,10 +24,12 @@ class FakePriceProvider:
 
 def test_portfolio_full_scenario():
     portfolio = Portfolio()
-    portfolio.add(Company("Old School Waterfall Software LTD"), 1000, "14/02/1990")
-    portfolio.add(Company("Crafter Masters Limited"), 400, "09/06/2016")
-    portfolio.add(Company("XP Practitioners Incorporated"), 700, "10/12/2018")
-    portfolio.remove(Company("Old School Waterfall Software LTD"), 500, "11/12/2018")
+    portfolio.add(Company("Old School Waterfall Software LTD"),
+                  1000, datetime(1990, 2, 14))
+    portfolio.add(Company("Crafter Masters Limited"), 400, datetime(2016, 6, 9))
+    portfolio.add(Company("XP Practitioners Incorporated"), 700, datetime(2018, 12, 10))
+    portfolio.remove(
+        Company("Old School Waterfall Software LTD"), 500, datetime(2018, 12, 11))
 
     price_provider = FakePriceProvider({
         "Old School Waterfall Software LTD": Dollar(5.75),
