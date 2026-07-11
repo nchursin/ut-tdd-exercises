@@ -5,50 +5,45 @@ from datetime import datetime
 from app.transaction import Operation, Transaction
 
 
-def test_portfolio_can_add_1000_shares_of_waterfall_inc():
+def test_portfolio_can_add_1000_shares_of_waterfall_inc(waterfall_inc):
     portfolio = Portfolio()
-    company = Company("Waterfall, Inc")
 
     portfolio.add(
-        company,
+        waterfall_inc,
         1000,
         datetime.today(),
     )
 
-    assert portfolio.count(company) == 1000
+    assert portfolio.count(waterfall_inc) == 1000
 
 
-def test_if_portfolio_added_1000_watefall_inc_last_operation_shows_it():
+def test_if_portfolio_added_1000_watefall_inc_last_operation_shows_it(waterfall_inc):
     portfolio = Portfolio()
-    company = Company("Waterfall, Inc")
     operation_date = datetime.today()
 
     portfolio.add(
-        company,
+        waterfall_inc,
         1000,
         operation_date,
     )
 
-    assert portfolio.last_operation(company) == Transaction(
+    assert portfolio.last_operation(waterfall_inc) == Transaction(
         operation_type=Operation.BUY,
         count=1000,
         date=operation_date,
     )
 
 
-def test_portfolio_can_add_100_shares_of_waterfall_inc_to_existing_200():
-    portfolio = Portfolio()
-    company = Company("Waterfall, Inc")
-    portfolio.add(
-        company,
-        200,
-        datetime.today(),
-    )
+def test_portfolio_can_add_100_shares_of_waterfall_inc_to_existing_200(
+        waterfall_inc,
+        portfolio_with_200_shares_of_waterfall_inc_bought_today
+):
+    portfolio = portfolio_with_200_shares_of_waterfall_inc_bought_today
 
     portfolio.add(
-        company,
+        waterfall_inc,
         100,
         datetime.today(),
     )
 
-    assert portfolio.count(company) == 300
+    assert portfolio.count(waterfall_inc) == 300

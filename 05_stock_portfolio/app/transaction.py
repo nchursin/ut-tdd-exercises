@@ -13,6 +13,9 @@ class Transaction:
         self.count = count
         self.date = date
 
+    def apply_operation_to_count(self, count: int) -> int:
+        return count + self.count
+
     def __eq__(self, other: object, /) -> bool:
         if not isinstance(other, Transaction):
             raise NotImplementedError

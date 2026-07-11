@@ -6,10 +6,11 @@ class Shares:
         self._count = count
 
     def do(self, transaction: Transaction):
-        self._last_operatioon = transaction
+        self._last_operation = transaction
+        self._count = transaction.apply_operation_to_count(self._count)
 
     def last_operation(self):
-        return self._last_operatioon
+        return self._last_operation
 
     def count(self):
         return self._count

@@ -9,20 +9,14 @@ class Portfolio:
     def __init__(self) -> None:
         self._shares = {}
 
-    def add(self, company, shares: int, date: datetime) -> None:
+    def add(self, company, count: int, date: datetime) -> None:
         self._shares.setdefault(company, Shares(0))
 
-        new_shares = self._shares[company]
-        new_shares._count += shares
-
-        new_shares.do(Transaction(
+        self._shares[company].do(Transaction(
             operation_type=Operation.BUY,
-            count=shares,
+            count=count,
             date=date,
         ))
-        self._shares = {
-            company: new_shares,
-        }
 
     def remove(self, company, shares: int, date: datetime) -> None:
         pass
