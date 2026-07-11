@@ -49,5 +49,5 @@ def test_report_print(
 
     assert report == (
         "company | shares | current price | current value | last operation\n"
-        f"Old School Waterfall Software LTD | 1000 | {price_provider.get_current_price(waterfall_inc)} | {price_provider.get_current_price(waterfall_inc) * 1000} | bought 1000 on 14/02/1990"
+        f"{waterfall_inc.name} | 1000 | {price_provider.get_current_price(waterfall_inc)} | {price_provider.get_current_price(waterfall_inc) * 1000} | bought 1000 on 14/02/1990"
     )
