@@ -26,8 +26,10 @@ def test_portfolio_full_scenario():
     portfolio = Portfolio()
     portfolio.add(Company("Old School Waterfall Software LTD"),
                   1000, datetime(1990, 2, 14))
-    portfolio.add(Company("Crafter Masters Limited"), 400, datetime(2016, 6, 9))
-    portfolio.add(Company("XP Practitioners Incorporated"), 700, datetime(2018, 12, 10))
+    portfolio.add(Company("Crafter Masters Limited"),
+                  400, datetime(2016, 6, 9))
+    portfolio.add(Company("XP Practitioners Incorporated"),
+                  700, datetime(2018, 12, 10))
     portfolio.remove(
         Company("Old School Waterfall Software LTD"), 500, datetime(2018, 12, 11))
 

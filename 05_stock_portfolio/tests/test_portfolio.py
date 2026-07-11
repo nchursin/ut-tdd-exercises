@@ -10,11 +10,12 @@ def test_portfolio_can_add_1000_shares_of_waterfall_inc():
     expected_shares = Shares(
         count=1000,
     )
+    company = Company("Waterfall, Inc")
 
     portfolio.add(
-        Company("Waterfall, Inc"),
+        company,
         1000,
         datetime.today(),
     )
 
-    assert portfolio._shares["Waterfall, Inc"] == expected_shares
+    assert portfolio._shares[company] == expected_shares
