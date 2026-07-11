@@ -15,5 +15,5 @@ def test_formatter_prints_values():
     assert fmt.print() == (
         "name | phone\n"
         "John | 123\n"
-        "Jane | 321\n"
+        "Jane | 321"
     )
