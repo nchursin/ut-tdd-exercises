@@ -13,11 +13,14 @@ class Transaction:
         self.count = count
         self.date = date
 
-    def apply_operation_to_count(self, count: int) -> int:
+    def apply_operation_to_count(self, current_amount: int) -> int:
         if self.operation_type == Operation.BUY:
-            return count + self.count
+            return current_amount + self.count
         else:
-            return count - self.count
+            if current_amount < self.count:
+                raise ArithmeticError(
+                    f"cannot sell more shares than exist in portfolio: have {current_amount}, selling {self.count}")
+            return current_amount - self.count
 
     def __eq__(self, other: object, /) -> bool:
         if not isinstance(other, Transaction):
