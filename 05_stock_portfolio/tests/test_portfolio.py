@@ -64,7 +64,7 @@ def test_portfolio_can_remove_100_shares_of_waterfall_inc_from_existing_200(
     assert portfolio.count(waterfall_inc) == 100
 
 
-def test_portfolio_cannot_remove_100_shares_of_waterfall_inc_from_existing_50(
+def test_portfolio_cannot_remove_300_shares_of_waterfall_inc_from_existing_200(
         waterfall_inc,
         portfolio_with_200_shares_of_waterfall_inc_bought_today
 ):
