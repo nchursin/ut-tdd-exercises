@@ -34,3 +34,21 @@ def test_if_portfolio_added_1000_watefall_inc_last_operation_shows_it():
         count=1000,
         date=operation_date,
     )
+
+
+def test_portfolio_can_add_100_shares_of_waterfall_inc_to_existing_200():
+    portfolio = Portfolio()
+    company = Company("Waterfall, Inc")
+    portfolio.add(
+        company,
+        200,
+        datetime.today(),
+    )
+
+    portfolio.add(
+        company,
+        100,
+        datetime.today(),
+    )
+
+    assert portfolio.count(company) == 300
