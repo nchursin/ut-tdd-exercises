@@ -10,6 +10,6 @@ def test_stringify_sell_transaction():
 
 
 def test_stringify_buy_transaction():
-    t = Transaction(Operation.BUY, 500, datetime(2019, 11, 11))
+    t = Transaction(Operation.BUY, 200, datetime(2019, 11, 11))
 
     assert t.__str__() == "bought 200 on 11/11/2019"

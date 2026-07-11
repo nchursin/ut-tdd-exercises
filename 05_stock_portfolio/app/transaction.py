@@ -6,6 +6,11 @@ class Operation(Enum):
     BUY = 1
     SELL = 2
 
+    def __str__(self) -> str:
+        if self == self.BUY:
+            return "bought"
+        return "sold"
+
 
 class Transaction:
     def __init__(self, operation_type: Operation, count: int, date: datetime) -> None:
@@ -32,4 +37,4 @@ class Transaction:
         )
 
     def __str__(self) -> str:
-        return f"sold {self.count} on {self.date.strftime('%d/%m/%Y')}"
+        return f"{self.operation_type} {self.count} on {self.date.strftime('%d/%m/%Y')}"
