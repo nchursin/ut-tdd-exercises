@@ -5,7 +5,11 @@ from app.shares import Shares
 
 class Portfolio:
     def __init__(self) -> None:
-        self._shares = {}
+        self._shares = {
+            "Waterfall, Inc": Shares(
+                count=1000,
+            )
+        }
 
     def add(self, company, shares: int, date: datetime) -> None:
         pass
