@@ -4,6 +4,7 @@ from datetime import datetime
 from app.company import Company
 from app.dollar import Dollar
 from app.portfolio import Portfolio
+from app.price_provider import HardcodedPriceProvider
 from app.text_formatter import TextFormatter
 
 
@@ -22,7 +23,7 @@ class FakePriceProvider:
 # =============================================================================
 
 
-def test_portfolio_full_scenario():
+def test_portfolio_full_scenario(price_provider):
     portfolio = Portfolio()
     portfolio.add(Company("Old School Waterfall Software LTD"),
                   1000, datetime(1990, 2, 14))
@@ -32,12 +33,6 @@ def test_portfolio_full_scenario():
                   700, datetime(2018, 12, 10))
     portfolio.remove(
         Company("Old School Waterfall Software LTD"), 500, datetime(2018, 12, 11))
-
-    price_provider = FakePriceProvider({
-        "Old School Waterfall Software LTD": Dollar(5.75),
-        "Crafter Masters Limited": Dollar(17.25),
-        "XP Practitioners Incorporated": Dollar(25.55),
-    })
 
     output = portfolio.print(price_provider, TextFormatter())
 

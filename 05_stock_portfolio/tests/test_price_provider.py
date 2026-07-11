@@ -9,6 +9,6 @@ def test_hardcoded_price_provider(waterfall_inc):
         }
     )
 
-    price = provider.get_price(waterfall_inc)
+    price = provider.get_current_price(waterfall_inc)
 
     assert Dollar(5) == price

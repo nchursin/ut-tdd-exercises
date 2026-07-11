@@ -34,7 +34,7 @@ class Portfolio:
         return self._shares[company].count()
 
     def get_report(self, price_provider: IPriceProvider) -> Report:
-        return Report()
+        return Report(self._shares, price_provider)
 
     def print(self, price_provider, formatter) -> str:
         return ("company | shares | current price | current value | last operation\n"

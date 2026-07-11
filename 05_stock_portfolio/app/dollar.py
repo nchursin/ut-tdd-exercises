@@ -10,3 +10,6 @@ class Dollar:
 
     def __mul__(self, multiplier: float) -> 'Dollar':
         return Dollar(self.amount * multiplier)
+
+    def __str__(self) -> str:
+        return f"$ {self.amount}"

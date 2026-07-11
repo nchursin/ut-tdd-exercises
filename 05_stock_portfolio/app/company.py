@@ -9,3 +9,6 @@ class Company:
         if not isinstance(other, Company):
             return False
         return self.name == other.name
+
+    def __str__(self) -> str:
+        return self.name
