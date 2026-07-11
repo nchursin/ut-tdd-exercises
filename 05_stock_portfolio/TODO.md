@@ -1,7 +1,7 @@
 - [x] portfolio can add 1000 shares of "waterfall inc"
 - [x] if portfolio added 1000 shares of "waterfall inc", last operation for "waterfall inc" is "bought 400 on 09/06/2016"
 - [x] portfolio can add 100 more shares of "waterfall inc" to existing 200
-- [ ] portfolio can remove 100 shares of "waterfall inc" from existing 200
+- [x] portfolio can remove 100 shares of "waterfall inc" from existing 200
 - [ ] portfolio cannot remove 100 shares of "waterfall inc" from existing 50
 - [ ] portfolio cannot remove 100 shares of "waterfall inc" from existing 50
 - [ ] if no shares of waterfall inc present - cannot sell them

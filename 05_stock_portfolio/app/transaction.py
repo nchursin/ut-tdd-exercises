@@ -9,18 +9,21 @@ class Operation(Enum):
 
 class Transaction:
     def __init__(self, operation_type: Operation, count: int, date: datetime) -> None:
-        self.type = operation_type
+        self.operation_type = operation_type
         self.count = count
         self.date = date
 
     def apply_operation_to_count(self, count: int) -> int:
-        return count + self.count
+        if self.operation_type == Operation.BUY:
+            return count + self.count
+        else:
+            return count - self.count
 
     def __eq__(self, other: object, /) -> bool:
         if not isinstance(other, Transaction):
             raise NotImplementedError
         return (
-            self.type == other.type and
+            self.operation_type == other.operation_type and
             self.count == other.count and
             self.date == other.date
         )
