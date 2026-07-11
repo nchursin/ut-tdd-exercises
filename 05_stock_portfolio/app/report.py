@@ -1,5 +1,28 @@
 from app.company import Company
+from app.dollar import Dollar
 from app.price_provider import IPriceProvider
+from app.shares import Shares
+from app.text_formatter import TextFormatter
+
+
+class ReportLine:
+    def __init__(self, company: Company, shares: Shares, price: Dollar) -> None:
+        self.company = company.__str__()
+        self.shares = shares.count()
+        self.current_price = price.__str__()
+        self.current_value = (price * shares.count()).__str__()
+        self.last_operation = shares.last_operation().__str__()
+
+    def __eq__(self, other: object, /) -> bool:
+        if not isinstance(other, ReportLine):
+            raise NotImplementedError
+        return (
+            self.company == other.company and
+            self.shares == other.shares and
+            self.current_price == other.current_price and
+            self.current_value == other.current_value and
+            self.last_operation == other.last_operation
+        )
 
 
 class Report:
@@ -7,13 +30,20 @@ class Report:
         self._shares = shares
         self._price_provider = price_provider
 
-    def get_line(self, company: Company) -> dict:
-        shares = self._shares[company]
-        price = self._price_provider.get_current_price(company)
-        return {
-            "company": company.__str__(),
-            "shares": shares.count(),
-            "current_price": price.__str__(),
-            "current_value": (price * shares.count()).__str__(),
-            "last_operation": shares.last_operation().__str__(),
-        }
+    def _get_report_line(self, company: Company):
+        return ReportLine(
+            company,
+            self._shares[company],
+            self._price_provider.get_current_price(company),
+        )
+
+    def get_lines(self):
+        result = []
+
+        for key in self._shares:
+            result.append(self._get_report_line(key))
+
+        return result
+
+    def print(self, formatter: TextFormatter):
+        pass

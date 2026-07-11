@@ -76,6 +76,6 @@ def test_portfolio_cannot_remove_300_shares_of_waterfall_inc_from_existing_200(
             datetime.today(),
         )
 
-    assert "cannot sell more shares than exist in portfolio" in cannot_retract_error.value.args[
-        0]
+    assert ("cannot sell more shares than exist in portfolio"
+            in cannot_retract_error.value.args[0])
     assert portfolio.count(waterfall_inc) == 200
