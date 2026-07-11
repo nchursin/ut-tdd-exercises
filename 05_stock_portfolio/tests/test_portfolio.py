@@ -47,3 +47,19 @@ def test_portfolio_can_add_100_shares_of_waterfall_inc_to_existing_200(
     )
 
     assert portfolio.count(waterfall_inc) == 300
+
+
+def test_portfolio_can_remove_100_shares_of_waterfall_inc_from_existing_200(
+        waterfall_inc,
+        portfolio_with_200_shares_of_waterfall_inc_bought_today
+):
+    portfolio = portfolio_with_200_shares_of_waterfall_inc_bought_today
+    assert portfolio.count(waterfall_inc) == 200
+
+    portfolio.remove(
+        waterfall_inc,
+        100,
+        datetime.today(),
+    )
+
+    assert portfolio.count(waterfall_inc) == 100
