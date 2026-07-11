@@ -1,7 +1,12 @@
 from datetime import datetime
 
+from app.shares import Shares
+
 
 class Portfolio:
+    def __init__(self) -> None:
+        self._shares = {}
+
     def add(self, company, shares: int, date: datetime) -> None:
         pass
 
