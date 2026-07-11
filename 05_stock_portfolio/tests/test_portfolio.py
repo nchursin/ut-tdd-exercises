@@ -2,7 +2,7 @@ import pytest
 
 from app.portfolio import Portfolio
 from datetime import datetime
-from app.transaction import Operation, Transaction
+from app.transaction import BuyTransaction
 
 
 def test_portfolio_can_add_1000_shares_of_waterfall_inc(waterfall_inc):
@@ -27,8 +27,7 @@ def test_if_portfolio_added_1000_watefall_inc_last_operation_shows_it(waterfall_
         operation_date,
     )
 
-    assert portfolio.last_operation(waterfall_inc) == Transaction(
-        operation_type=Operation.BUY,
+    assert portfolio.last_operation(waterfall_inc) == BuyTransaction(
         count=1000,
         date=operation_date,
     )

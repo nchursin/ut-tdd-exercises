@@ -1,11 +1,11 @@
-from app.transaction import Transaction
+from app.transaction import ITransaction
 
 
 class Shares:
     def __init__(self, count: int) -> None:
         self._count = count
 
-    def do(self, transaction: Transaction):
+    def do(self, transaction: ITransaction):
         self._last_operation = transaction
         self._count = transaction.apply_operation_to_count(self._count)
 

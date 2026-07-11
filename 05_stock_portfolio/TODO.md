@@ -1,2 +1,2 @@
-- [ ] transaction "sell 500 share on 11.12.2018" prints itself as "sold 500 on 11/12/2018"
-- [ ] transaction "buy 200 share on 11.11.2019" prints itself as "bought 200 on 11/11/2019"
+- [x] transaction "sell 500 share on 11.12.2018" prints itself as "sold 500 on 11/12/2018"
+- [x] transaction "buy 200 share on 11.11.2019" prints itself as "bought 200 on 11/11/2019"
