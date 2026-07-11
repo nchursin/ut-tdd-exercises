@@ -1,0 +1,2 @@
+- [ ] portfolio can add 1000 shares of "waterfall inc"
+- [ ] if portfolio added 1000 shares of "waterfall inc", last operation for "waterfall inc" is "bought 400 on 09/06/2016"
