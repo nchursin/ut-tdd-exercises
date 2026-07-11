@@ -30,3 +30,6 @@ class Transaction:
             self.count == other.count and
             self.date == other.date
         )
+
+    def __str__(self) -> str:
+        return f"sold {self.count} on {self.date.strftime('%d/%m/%Y')}"
