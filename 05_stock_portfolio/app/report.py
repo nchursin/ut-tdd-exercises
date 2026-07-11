@@ -37,7 +37,7 @@ class Report:
             self._price_provider.get_current_price(company),
         )
 
-    def get_lines(self):
+    def get_lines(self) -> list[ReportLine]:
         result = []
 
         for key in self._shares:
@@ -46,11 +46,13 @@ class Report:
         return result
 
     def print(self, formatter: TextFormatter):
-        result = "company | shares | current price | current value | last operation\n"
-        report_line = self._get_report_line(
-            Company("Old School Waterfall Software LTD"))
-
+        values = []
         for line in self.get_lines():
-            result += f"{line.company} | {report_line.shares} | {report_line.current_price} | {report_line.current_value} | {report_line.last_operation}"
+            values.append([line.company, line.shares.__str__(), line.current_price,
+                           line.current_value, line.last_operation])
 
-        return result
+        formatter.set_headers(["company", "shares", "current price",
+                               "current value", "last operation"])
+        formatter.set_values(values)
+
+        return formatter.print()
