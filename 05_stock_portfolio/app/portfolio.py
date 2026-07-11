@@ -10,12 +10,14 @@ class Portfolio:
         self._shares = {}
 
     def add(self, company, shares: int, date: datetime) -> None:
-        new_shares = Shares(
-            count=shares,
-        )
+        self._shares.setdefault(company, Shares(0))
+
+        new_shares = self._shares[company]
+        new_shares._count += shares
+
         new_shares.do(Transaction(
             operation_type=Operation.BUY,
-            count=1000,
+            count=shares,
             date=date,
         ))
         self._shares = {
