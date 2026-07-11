@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from app.company import Company
+from app.price_provider import IPriceProvider
+from app.report import Report
 from app.shares import Shares
 from app.transaction import BuyTransaction, SellTransaction, ITransaction
 
@@ -30,6 +32,9 @@ class Portfolio:
 
     def count(self, company: Company) -> int:
         return self._shares[company].count()
+
+    def get_report(self, price_provider: IPriceProvider) -> Report:
+        return Report()
 
     def print(self, price_provider, formatter) -> str:
         return ("company | shares | current price | current value | last operation\n"
