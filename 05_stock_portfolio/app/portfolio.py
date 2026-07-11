@@ -19,7 +19,9 @@ class Portfolio:
         ))
 
     def remove(self, company, shares: int, date: datetime) -> None:
-        pass
+        self._shares.setdefault(company, Shares(0))
+
+        self._shares[company]._count -= shares
 
     def last_operation(self, company: Company) -> Transaction:
         return self._shares[company].last_operation()
