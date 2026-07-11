@@ -10,22 +10,26 @@ class Portfolio:
         self._shares = {}
 
     def add(self, company, shares: int, date: datetime) -> None:
+        new_shares = Shares(
+            count=shares,
+        )
+        new_shares.do(Transaction(
+            operation_type=Operation.BUY,
+            count=1000,
+            date=date,
+        ))
         self._shares = {
-            company: Shares(
-                count=shares,
-            )
+            company: new_shares,
         }
-        self._operation_date = date
 
     def remove(self, company, shares: int, date: datetime) -> None:
         pass
 
     def last_operation(self, company: Company) -> Transaction:
-        return Transaction(
-            operation_type=Operation.BUY,
-            count=1000,
-            date=self._operation_date,
-        )
+        return self._shares[company].last_operation()
+
+    def count(self, company: Company) -> int:
+        return self._shares[company].count()
 
     def print(self, price_provider, formatter) -> str:
         return ("company | shares | current price | current value | last operation\n"

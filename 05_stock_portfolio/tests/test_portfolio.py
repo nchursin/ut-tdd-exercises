@@ -2,15 +2,11 @@ from app.company import Company
 from app.portfolio import Portfolio
 from datetime import datetime
 
-from app.shares import Shares
 from app.transaction import Operation, Transaction
 
 
 def test_portfolio_can_add_1000_shares_of_waterfall_inc():
     portfolio = Portfolio()
-    expected_shares = Shares(
-        count=1000,
-    )
     company = Company("Waterfall, Inc")
 
     portfolio.add(
@@ -19,7 +15,7 @@ def test_portfolio_can_add_1000_shares_of_waterfall_inc():
         datetime.today(),
     )
 
-    assert portfolio._shares[company] == expected_shares
+    assert portfolio.count(company) == 1000
 
 
 def test_if_portfolio_added_1000_watefall_inc_last_operation_shows_it():
