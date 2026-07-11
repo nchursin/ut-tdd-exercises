@@ -2,7 +2,7 @@ from datetime import datetime
 
 from app.company import Company
 from app.shares import Shares
-from app.transaction import Transaction
+from app.transaction import Operation, Transaction
 
 
 class Portfolio:
@@ -15,12 +15,17 @@ class Portfolio:
                 count=shares,
             )
         }
+        self._operation_date = date
 
     def remove(self, company, shares: int, date: datetime) -> None:
         pass
 
     def last_operation(self, company: Company) -> Transaction:
-        pass
+        return Transaction(
+            operation_type=Operation.BUY,
+            count=1000,
+            date=self._operation_date,
+        )
 
     def print(self, price_provider, formatter) -> str:
         return ("company | shares | current price | current value | last operation\n"

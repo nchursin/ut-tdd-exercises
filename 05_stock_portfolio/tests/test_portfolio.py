@@ -34,7 +34,7 @@ def test_if_portfolio_added_1000_watefall_inc_last_operation_shows_it():
     )
 
     assert portfolio.last_operation(company) == Transaction(
-        type=Operation.BUY,
+        operation_type=Operation.BUY,
         count=1000,
         date=operation_date,
     )
