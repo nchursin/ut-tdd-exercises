@@ -37,6 +37,7 @@ class Portfolio:
         return Report(self._shares, price_provider)
 
     def print(self, price_provider, formatter) -> str:
+        # return self.get_report(price_provider).print(formatter)
         return ("company | shares | current price | current value | last operation\n"
                 "Old School Waterfall Software LTD | 500 | $5.75 | $2,875.00 | sold 500 on 11/12/2018\n"
                 "Crafter Masters Limited | 400 | $17.25 | $6,900.00 | bought 400 on 09/06/2016\n"

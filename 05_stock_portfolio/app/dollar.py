@@ -1,3 +1,8 @@
+import locale
+
+locale.setlocale(locale.LC_NUMERIC, 'en_GB.UTF-8')
+
+
 class Dollar:
     def __init__(self, amount: float) -> None:
         self.amount = amount
@@ -12,4 +17,4 @@ class Dollar:
         return Dollar(self.amount * multiplier)
 
     def __str__(self) -> str:
-        return f"$ {self.amount}"
+        return locale.format_string("$%.2f", self.amount, True)

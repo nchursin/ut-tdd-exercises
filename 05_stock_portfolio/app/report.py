@@ -5,7 +5,7 @@ from app.shares import Shares
 from app.text_formatter import TextFormatter
 
 
-class ReportLine:
+class _ReportLine:
     def __init__(self, company: Company, shares: Shares, price: Dollar) -> None:
         self.company = company.__str__()
         self.shares = shares.count()
@@ -14,7 +14,7 @@ class ReportLine:
         self.last_operation = shares.last_operation().__str__()
 
     def __eq__(self, other: object, /) -> bool:
-        if not isinstance(other, ReportLine):
+        if not isinstance(other, _ReportLine):
             raise NotImplementedError
         return (
             self.company == other.company and
@@ -31,13 +31,13 @@ class Report:
         self._price_provider = price_provider
 
     def _get_report_line(self, company: Company):
-        return ReportLine(
+        return _ReportLine(
             company,
             self._shares[company],
             self._price_provider.get_current_price(company),
         )
 
-    def get_lines(self) -> list[ReportLine]:
+    def _get_lines(self) -> list[_ReportLine]:
         result = []
 
         for key in self._shares:
@@ -47,7 +47,7 @@ class Report:
 
     def print(self, formatter: TextFormatter):
         values = []
-        for line in self.get_lines():
+        for line in self._get_lines():
             values.append([line.company, line.shares.__str__(), line.current_price,
                            line.current_value, line.last_operation])
 
