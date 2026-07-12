@@ -31,3 +31,13 @@ def test_return_deadline_is_15_days_for_weekday_after_1800(regular_receipt):
 def test_status_is_can_be_returned_on_purchase_day(regular_receipt):
     receipt = regular_receipt(datetime.now())
     assert receipt.status == "can_be_returned"
+
+
+def test_status_is_can_not_be_returned_on_16th_day(regular_receipt):
+    receipt = regular_receipt(datetime.now() - timedelta(days=16))
+    assert receipt.status == "cannot_be_returned"
+
+
+def test_status_is_archived_on_44th_day(regular_receipt):
+    receipt = regular_receipt(datetime.now() - timedelta(days=44))
+    assert receipt.status == "archived"
