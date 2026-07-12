@@ -99,21 +99,17 @@ class Receipt:
             if purchase_datetime.hour >= 18:
                 deadline_days = deadline_days + 1
 
+        if item.name != "Sulfuras, Hand of Ragnaros":
+            projected_sell_in = item.sell_in - 2
+            if projected_sell_in <= deadline_days:
+                deadline_days = projected_sell_in
+            if item.name != "Aged Brie":
+                projected_quality = item.quality - 2
+                if projected_quality <= deadline_days:
+                    deadline_days = projected_quality
+
         self.return_deadline = purchase_datetime + \
             timedelta(days=deadline_days)
-
-        can_return = True
-        if item.name != "Sulfuras, Hand of Ragnaros":
-            projected_sell_in = item.sell_in - deadline_days
-            if projected_sell_in <= 2:
-                can_return = False
-            if item.name != "Aged Brie":
-                projected_quality = item.quality - deadline_days
-                if projected_quality <= 2:
-                    can_return = False
-
-        if not can_return:
-            self.return_deadline = purchase_datetime
 
         now = self.now()
         if now <= self.return_deadline:
