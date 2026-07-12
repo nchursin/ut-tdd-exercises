@@ -60,7 +60,8 @@ class GildedRose(object):
                 cannot_be_returned_count = cannot_be_returned_count + 1
             if receipt.status == "archived":
                 archived_count = archived_count + 1
-        report = "===== Receipt Report [%s] =====\n" % datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        report = "===== Receipt Report [%s] =====\n" % datetime.now().strftime(
+            "%Y-%m-%d %H:%M:%S")
         report = report + "can_be_returned: %d\n" % can_be_returned_count
         report = report + "cannot_be_returned: %d\n" % cannot_be_returned_count
         report = report + "archived: %d\n" % archived_count
@@ -98,7 +99,8 @@ class Receipt:
             if purchase_datetime.hour >= 18:
                 deadline_days = deadline_days + 1
 
-        self.return_deadline = purchase_datetime + timedelta(days=deadline_days)
+        self.return_deadline = purchase_datetime + \
+            timedelta(days=deadline_days)
 
         can_return = True
         if item.name != "Sulfuras, Hand of Ragnaros":
@@ -113,7 +115,7 @@ class Receipt:
         if not can_return:
             self.return_deadline = purchase_datetime
 
-        now = datetime.now()
+        now = self.now()
         if now <= self.return_deadline:
             self.status = "can_be_returned"
         else:
@@ -121,6 +123,9 @@ class Receipt:
                 self.status = "cannot_be_returned"
             else:
                 self.status = "archived"
+
+    def now(self):
+        return datetime.now()
 
     def __repr__(self):
         return "%s, %s, %s, %s" % (self.item_name, self.customer_name, self.return_deadline.strftime("%Y-%m-%d %H:%M"), self.status)
