@@ -62,6 +62,11 @@ def regular_receipt(regular_item):
 
 
 @fixture
+def regular_testable_receipt(regular_item):
+    return lambda purchase_date, now_override: TestableReceipt(now_override, regular_item, "Thrall", purchase_date)
+
+
+@fixture
 @freeze_time("2026-07-11")
 def saturday_receipt(regular_item):
     return Receipt(regular_item, "Thrall", datetime.now())

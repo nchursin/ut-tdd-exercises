@@ -39,12 +39,14 @@ class GildedRose(object):
                         item.quality = item.quality + 1
 
     def update_receipts(self):
+        self.update_receipts_for_date(datetime.now())
+
+    def update_receipts_for_date(self, date: datetime):
         for receipt in self.receipts:
-            now = datetime.now()
-            if now <= receipt.return_deadline:
+            if date <= receipt.return_deadline:
                 receipt.status = "can_be_returned"
             else:
-                if now <= receipt.return_deadline + timedelta(days=30):
+                if date <= receipt.return_deadline + timedelta(days=30):
                     receipt.status = "cannot_be_returned"
                 else:
                     receipt.status = "archived"
