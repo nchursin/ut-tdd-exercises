@@ -4,9 +4,10 @@ from datetime import datetime, timedelta
 
 class GildedRose(object):
 
-    def __init__(self, items, receipts=None):
+    def __init__(self, items, receipts=None, current_date_provider=None):
         self.items = items
         self.receipts = receipts if receipts is not None else []
+        self.current_date_provider = current_date_provider
 
     def update_quality(self):
         for item in self.items:
@@ -51,6 +52,11 @@ class GildedRose(object):
                 else:
                     receipt.status = "archived"
 
+    def now(self):
+        if self.current_date_provider is not None:
+            return self.current_date_provider()
+        return datetime.now()
+
     def generate_receipt_report(self):
         can_be_returned_count = 0
         cannot_be_returned_count = 0
@@ -62,7 +68,7 @@ class GildedRose(object):
                 cannot_be_returned_count = cannot_be_returned_count + 1
             if receipt.status == "archived":
                 archived_count = archived_count + 1
-        report = "===== Receipt Report [%s] =====\n" % datetime.now().strftime(
+        report = "===== Receipt Report [%s] =====\n" % self.now().strftime(
             "%Y-%m-%d %H:%M:%S")
         report = report + "can_be_returned: %d\n" % can_be_returned_count
         report = report + "cannot_be_returned: %d\n" % cannot_be_returned_count
